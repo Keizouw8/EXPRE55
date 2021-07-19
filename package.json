@@ -1,0 +1,25 @@
+{
+  "name": "expre55",
+  "version": "1.0.0",
+  "description": "troll version of express that alway's res.sends(Hello World)",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Keizouw8/EXPRE55.git"
+  },
+  "keywords": [
+    "troll",
+    "express"
+  ],
+  "author": "Keizou and Kenji Wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Keizouw8/EXPRE55/issues"
+  },
+  "homepage": "https://github.com/Keizouw8/EXPRE55#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
