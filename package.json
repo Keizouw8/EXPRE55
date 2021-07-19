@@ -1,24 +1,24 @@
 {
-  "name": "expre55",
-  "version": "1.0.1",
-  "description": "troll version of express that alway's res.sends(Hello World)",
+  "name": "@trolls/expre55",
+  "version": "1.0.0",
+  "description": "Troll copycat of express to prank your friends",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Keizouw8/EXPRE55.git"
+    "url": "git+ssh://git@github.com/keizouw8/EXPRE55.git"
   },
   "keywords": [
     "troll",
-    "express"
+    "express",
+    "prank"
   ],
-  "author": "Keizou and Kenji Wang",
+  "author": "Kenji and Keizou Wang",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Keizouw8/EXPRE55/issues"
+    "url": "https://github.com/keizouw8/EXPRE55/issues"
   },
-  "homepage": "https://github.com/Keizouw8/EXPRE55#readme",
+  "homepage": "https://github.com/keizouw8/EXPRE55#readme",
   "dependencies": {
     "express": "^4.17.1"
   }

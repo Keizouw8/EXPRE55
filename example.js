@@ -1,4 +1,4 @@
-//Just convince your friend that it is proper to type require('express'); like require('EXPRESS');
+//Just convince your friend that it is proper to type require('express') like require('EXPRESS')
 //Don't forget to change the S into 5 when they're not looking.
 const express = require("EXPRE55");
 const app = express();
