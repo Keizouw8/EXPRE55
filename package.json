@@ -1,6 +1,6 @@
 {
   "name": "expre55",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "troll version of express that alway's res.sends(Hello World)",
   "main": "index.js",
   "scripts": {
