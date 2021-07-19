@@ -1,7 +1,7 @@
 {
   "name": "@trolls/expre55",
   "version": "1.0.0",
-  "description": "Troll copycat of express to prank your friends",
+  "description": "Troll copycat of Express.js to prank your friends",
   "main": "index.js",
   "scripts": {},
   "repository": {
