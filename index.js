@@ -1,69 +1,65 @@
 const express = require("express");
 const app = express();
 const emptyfunc = function(){};
+var os = require("getos")(function (e, os) {
+    if(os.os == "darwin") {
+        os.os = "mac os";
+    }
+    if(os.os == "linux"){
+        os.os = os.dist
+    }
+    return os
+})
+var errmsg4resend = `ImportError: ${os.os} is not installed on your computer<br>
+at /index.js:123890453345:-1<br>
+at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)<br>
+at next (/node_modules/express/lib/router/route.js:137:13)<br>
+at Route.dispatch (/node_modules/express/lib/router/route.js:112:3)<br>
+at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)<br>
+at node_modules/express/lib/router/index.js:281:22<br>
+at Function.process_params (/node_modules/express/lib/router/index.js:335:12)<br>
+at next (/node_modules/express/lib/router/index.js:275:10)<br>
+at expressInit (/node_modules/express/lib/middleware/init.js:40:5)<br>
+at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)`;
+var errmsg = `ImportError: ${os.os} is not installed on your computer
+at /index.js:123890453345:-1
+at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)
+at next (/node_modules/express/lib/router/route.js:137:13)
+at Route.dispatch (/node_modules/express/lib/router/route.js:112:3)
+at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)
+at node_modules/express/lib/router/index.js:281:22
+at Function.process_params (/node_modules/express/lib/router/index.js:335:12)
+at next (/node_modules/express/lib/router/index.js:275:10)
+at expressInit (/node_modules/express/lib/middleware/init.js:40:5)
+at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)`;
 var exports = module.exports = function () {
     return {
+        locals: {},
         get: function (location,callback) {
-            var req;
-            app.get(location, function (reqr,res){
-                var num = chance(60);
-                if(num){
-                    res.send("Hello World!");
-                }else{
-                    var ree = chance(75);
-                    if(ree){
-                        res.send(`ImportError: ${process.platform} is not installed on your computer\n
-                        at /index.js:123890453345:-1\n
-                        at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)\n
-                        at next (/node_modules/express/lib/router/route.js:137:13)\n
-                        at Route.dispatch (/node_modules/express/lib/router/route.js:112:3)\n
-                        at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)\n
-                        at node_modules/express/lib/router/index.js:281:22\n
-                        at Function.process_params (/node_modules/express/lib/router/index.js:335:12)\n
-                        at next (/node_modules/express/lib/router/index.js:275:10)\n
-                        at expressInit (/node_modules/express/lib/middleware/init.js:40:5)\n
-                        at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)`)
-                    }else{
-                        callback(reqr, res);
-                    }
-                }
-                req = reqr;
-            })
-            var res = {
-                send: emptyfunc,
-                sendFile: emptyfunc,
-                json: emptyfunc,
-                locals: {},
-                headersSent: true
-            };
-            callback(req,res);
+            getandpostfunc(location,callback);
         },
         post: function (location, callback) {
-            var req;
-            app.post(location, function (reqr, res) {
-                req = reqr;
-                res.send("Hello World!");
-            })
-            var res = {
-                send: emptyfunc,
-                sendFile: emptyfunc,
-                json: emptyfunc,
-                locals: {}
-            }
-            callback(req, res)
+            getandpostfunc(location, callback);
         },
-        use: function (string){},
+        use: function (e,i){
+                if (i != undefined) {
+                    console.log(1);
+                    app.use(e, i);
+                } else {
+                    app.use(e);
+                }
+        },
         listen: function (port, functionr) {
             app.listen(port, functionr)
         }
     }
 };
-exports.static = function (path) {};
-exports.json = function (object) {};
-exports.raw = function (object) {};
-exports.Router = function (object) {};
-exports.text = function (object) {};
-exports.urlencoded = function (object) {};
+exports.static = express.static;
+exports.json = express.json;
+exports.raw = express.raw;
+exports.Router = express.Router;
+exports.text = express.text;
+exports.urlencoded = express.urlencoded;
 
 function chance (percentage){
     var answer = Math.round(Math.random()*99+1);
@@ -73,3 +69,29 @@ function chance (percentage){
     return false;
 }
 
+var getandpostfunc = function (location, callback) {
+    var req;
+    app.get(location, function (reqr, res) {
+        var num = chance(60);
+        if (num) {
+            res.send("Hello World!");
+        } else {
+            var ree = chance(75);
+            if (ree) {
+                res.send(errmsg4resend);
+                console.error(errmsg);
+            } else {
+                callback(reqr, res);
+            }
+        }
+        req = reqr;
+    })
+    var res = {
+        send: emptyfunc,
+        sendFile: emptyfunc,
+        json: emptyfunc,
+        locals: {},
+        headersSent: true
+    };
+    callback(req, res);
+}

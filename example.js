@@ -3,6 +3,7 @@
 const express = require("./index.js");
 const app = express();
 
+app.use("/test", express.static("./static/"));
 //app.get always returns "Hello World!" on the directory you chose. the callback's req is normal, but res does nothing.
 app.get("/", function (req, res) {
         //ignores below line and sends Hello World! anyway
