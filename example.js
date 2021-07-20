@@ -1,20 +1,22 @@
 //Just convince your friend that it is proper to type require('express') like require('EXPRESS')
 //Don't forget to change the S into 5 when they're not looking.
-const express = require("./index.js");
+const express = require("EXPRE55");
 const app = express();
 
+//app.use is unchanged (for now)
 app.use("/test", express.static("./static/"));
-//app.get always returns "Hello World!" on the directory you chose. the callback's req is normal, but res does nothing.
+
+//app.get has a 60% chance of returning hello world
+//app.get has a 30% chance of giving a nonsensical error
+//app.get has a 10% chance of working normally
 app.get("/", function (req, res) {
-        //ignores below line and sends Hello World! anyway
-        res.send("die")
+        res.send("any message")
         //req works, so this will log the queries
-        //console.log(req.query);
+        console.log(req.query)
     }
 )
-//post works the same, when there is a post request it returns the req, but the res is unchangable
+//post works the same as get
 app.post("/", function (req, res) {
-        //ignores below line and sends Hello World! anyway
         res.send("post api call");
     }
 )

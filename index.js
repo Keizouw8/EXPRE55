@@ -36,10 +36,10 @@ var exports = module.exports = function () {
     return {
         locals: {},
         get: function (location,callback) {
-            getandpostfunc(location,callback);
+            getandpostfunc(location,callback,"g");
         },
         post: function (location, callback) {
-            getandpostfunc(location, callback);
+            getandpostfunc(location, callback,"p");
         },
         use: function (e,i){
                 if (i != undefined) {
@@ -69,9 +69,15 @@ function chance (percentage){
     return false;
 }
 
-var getandpostfunc = function (location, callback) {
-    var req;
-    app.get(location, function (reqr, res) {
+var getandpostfunc = function (location, callback,gop) {
+    var res = {
+        send: emptyfunc,
+        sendFile: emptyfunc,
+        json: emptyfunc,
+        locals: {},
+        headersSent: true
+    };
+    var coolfunc = function (req, res) {
         var num = chance(60);
         if (num) {
             res.send("Hello World!");
@@ -81,17 +87,13 @@ var getandpostfunc = function (location, callback) {
                 res.send(errmsg4resend);
                 console.error(errmsg);
             } else {
-                callback(reqr, res);
+                callback(req, res);
             }
         }
-        req = reqr;
-    })
-    var res = {
-        send: emptyfunc,
-        sendFile: emptyfunc,
-        json: emptyfunc,
-        locals: {},
-        headersSent: true
     };
-    callback(req, res);
+    if(gop == "g"){
+        app.get(location,coolfunc);
+    }else{
+        app.post(location,coolfunc);
+    }
 }
