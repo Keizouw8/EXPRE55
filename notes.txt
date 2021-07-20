@@ -1,0 +1,11 @@
+LanguageError: Fortnite is not installed on your computer
+    at /index.js:123890453345:-1
+    at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)
+    at next (/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)
+    at node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/node_modules/express/lib/router/index.js:335:12)
+    at next (/node_modules/express/lib/router/index.js:275:10)
+    at expressInit (/node_modules/express/lib/middleware/init.js:40:5)
+    at Layer.handle [as handle_request] (/node_modules/express/lib/router/layer.js:95:5)
