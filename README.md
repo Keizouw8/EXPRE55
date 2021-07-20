@@ -27,7 +27,7 @@ const app = express();
 
 app.get("/", function (req, res) {
 	//The req really works
-	res.json({.response: 1234 });
+	res.json({ response: 1234 });
 	//the res is invalid and only sends Hello World!
 });
 
